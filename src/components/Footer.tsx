@@ -1,0 +1,181 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { brandConfig } from '../config/brandConfig';
+import { 
+
+  Mail, 
+  Phone, 
+  MapPin, 
+  ShieldCheck, 
+  CheckCircle2,
+  Clock,
+  ArrowRight
+} from 'lucide-react';
+import { PRODUCTS_DATA } from '../data/productsData';
+
+export const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer 
+      style={{
+        backgroundColor: 'var(--color-carbon-950)',
+        borderTop: '1px solid var(--color-carbon-700)',
+        color: 'var(--color-gray-400)',
+        paddingTop: '4.5rem',
+        paddingBottom: '2rem'
+      }}
+    >
+      <div className="container">
+        {/* Top Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+          gap: '2.5rem',
+          marginBottom: '3.5rem'
+        }}>
+          
+          {/* Column 1: Company Profile */}
+          <div>
+            <Link 
+              to="/" 
+              style={{ display: 'inline-block', textDecoration: 'none', marginBottom: '1.25rem' }}
+              aria-label="CoalLuxe - The Essence of Fire Home"
+            >
+              <img 
+                src="/images/logo_transparent.png" 
+                alt="CoalLuxe - The Essence of Fire" 
+                style={{ height: '42px', width: 'auto', maxWidth: '220px', objectFit: 'contain', display: 'block' }} 
+              />
+            </Link>
+
+            <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-gray-300)', marginBottom: '1.5rem' }}>
+              {brandConfig.description}
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.8rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-gray-300)' }}>
+                <ShieldCheck size={16} color="var(--color-accent)" />
+                <span>UN 1361 Class 4.2 Maritime Certified</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-gray-300)' }}>
+                <CheckCircle2 size={16} color="var(--color-success)" />
+                <span>FSC® Verified Sourcing</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2: Core Products */}
+          <div>
+            <h4 style={{ fontSize: '1rem', color: '#FFFFFF', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Export Products
+            </h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.9rem' }}>
+              {PRODUCTS_DATA.slice(0, 5).map(product => (
+                <li key={product.id}>
+                  <Link 
+                    to={`/products/${product.slug}`} 
+                    style={{ color: 'var(--color-gray-300)', textDecoration: 'none', transition: 'color 0.2s', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+                    className="footer-link"
+                  >
+                    <ArrowRight size={12} color="var(--color-accent)" /> {product.shortTitle}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/products" style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.85rem' }}>
+                  View All Catalogue &rarr;
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Quick Navigation */}
+          <div>
+            <h4 style={{ fontSize: '1rem', color: '#FFFFFF', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Company & Process
+            </h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.9rem' }}>
+              <li><Link to="/about" className="footer-link">About Company</Link></li>
+              <li><Link to="/manufacturing" className="footer-link">6-Stage Manufacturing</Link></li>
+              <li><Link to="/quality" className="footer-link">Quality Assurance & Lab</Link></li>
+              <li><Link to="/packaging-export" className="footer-link">Packaging & Container Loading</Link></li>
+              <li><Link to="/gallery" className="footer-link">Factory Gallery</Link></li>
+              <li><Link to="/resources" className="footer-link">Educational Insights</Link></li>
+              <li><Link to="/faq" className="footer-link">B2B Buyer FAQs</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact & Operations */}
+          <div>
+            <h4 style={{ fontSize: '1rem', color: '#FFFFFF', marginBottom: '1.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Global Sales Desk
+            </h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.85rem', fontSize: '0.875rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', color: 'var(--color-gray-300)' }}>
+                <MapPin size={18} color="var(--color-accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>{brandConfig.address}</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-gray-300)' }}>
+                <Mail size={16} color="var(--color-accent)" style={{ flexShrink: 0 }} />
+                <a href={`mailto:${brandConfig.email.split(' ')[0]}`} style={{ color: 'var(--color-gray-200)' }}>
+                  {brandConfig.email}
+                </a>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-gray-300)' }}>
+                <Phone size={16} color="var(--color-accent)" style={{ flexShrink: 0 }} />
+                <span style={{ color: 'var(--color-gray-200)', fontFamily: 'var(--font-mono)' }}>
+                  {brandConfig.phone}
+                </span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-gray-400)' }}>
+                <Clock size={16} color="var(--color-gray-500)" style={{ flexShrink: 0 }} />
+                <span>Export Desk: Mon - Sat 08:00 - 18:00 UTC</span>
+              </li>
+            </ul>
+
+            <div style={{ marginTop: '1.25rem' }}>
+              <Link to="/request-quote" className="btn btn-primary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
+                Request Container Quotation
+              </Link>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Compliance & Copyright Row */}
+        <div style={{
+          borderTop: '1px solid var(--color-carbon-800)',
+          paddingTop: '1.75rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1rem',
+          fontSize: '0.825rem'
+        }}>
+          <div>
+            &copy; {currentYear} {brandConfig.companyName}. All international commercial rights reserved.
+          </div>
+          <div style={{ display: 'flex', gap: '1.25rem' }}>
+            <Link to="/privacy-policy" style={{ color: 'var(--color-gray-400)' }}>Privacy Policy</Link>
+            <Link to="/terms" style={{ color: 'var(--color-gray-400)' }}>Terms of Supply</Link>
+            <Link to="/contact" style={{ color: 'var(--color-gray-400)' }}>Contact</Link>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .footer-link {
+          color: var(--color-gray-300);
+          text-decoration: none;
+          transition: color 0.15s ease;
+        }
+        .footer-link:hover {
+          color: var(--color-accent);
+          padding-left: 2px;
+        }
+      `}</style>
+    </footer>
+  );
+};
