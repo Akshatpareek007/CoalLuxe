@@ -8,11 +8,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  // Extract key metrics from specs
-  const fixedCarbon = product.specifications.find(s => s.parameter.toLowerCase().includes('carbon'))?.value || '78%+';
-  const burnTime = product.specifications.find(s => s.parameter.toLowerCase().includes('burn'))?.value || '4-5 Hours';
-  const calorific = product.specifications.find(s => s.parameter.toLowerCase().includes('calorific'))?.value || '>7,200 kcal/kg';
-
   return (
     <article className="product-card" aria-labelledby={`prod-title-${product.id}`}>
       {/* Image Container */}
@@ -39,32 +34,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p style={{ fontSize: '0.875rem', color: 'var(--color-gray-400)', marginBottom: '1.25rem', lineHeight: 1.5, flexGrow: 1 }}>
           {product.tagline}
         </p>
-
-        {/* Technical Highlights Bar */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '0.5rem',
-          backgroundColor: 'var(--color-carbon-800)',
-          border: '1px solid var(--color-carbon-700)',
-          borderRadius: 'var(--radius-sm)',
-          padding: '0.65rem 0.5rem',
-          marginBottom: '1.25rem',
-          textAlign: 'center'
-        }}>
-          <div>
-            <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--color-gray-400)', fontWeight: 600 }}>Fixed Carbon</div>
-            <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-accent-light)', fontFamily: 'var(--font-mono)' }}>{fixedCarbon.split(' ')[0]}</div>
-          </div>
-          <div style={{ borderLeft: '1px solid var(--color-carbon-700)', borderRight: '1px solid var(--color-carbon-700)' }}>
-            <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--color-gray-400)', fontWeight: 600 }}>Burn Time</div>
-            <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', fontFamily: 'var(--font-mono)' }}>{burnTime.split(' ')[0]}</div>
-          </div>
-          <div>
-            <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--color-gray-400)', fontWeight: 600 }}>Calorific</div>
-            <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-success)', fontFamily: 'var(--font-mono)' }}>{calorific.replace(' kcal / kg', '').replace(' kcal/kg', '')}</div>
-          </div>
-        </div>
 
         {/* Action Buttons */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
