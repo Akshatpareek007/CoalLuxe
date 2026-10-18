@@ -95,7 +95,7 @@ export const LogoIntroAnimation: React.FC<LogoIntroAnimationProps> = ({ onComple
         position: 'fixed',
         inset: 0,
         zIndex: 99999,
-        pointerEvents: phase === 'completed' ? 'none' : 'auto',
+        pointerEvents: 'auto',
         overflow: 'hidden'
       }}
     >

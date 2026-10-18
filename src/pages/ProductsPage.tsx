@@ -267,7 +267,7 @@ export const ProductsPage: React.FC = () => {
                   return (
                     <button
                       key={cat.id}
-                      onClick={(e) => handleCategoryClick(e, cat.id)}
+                      onClick={() => handleCategoryClick(cat.id)}
                       className="btn"
                       style={{
                         flexShrink: 0,
