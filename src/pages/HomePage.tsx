@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { brandConfig } from '../config/brandConfig';
-import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '../data/productsData';
 import { MANUFACTURING_STEPS } from '../data/manufacturingSteps';
 import { GALLERY_DATA } from '../data/galleryData';
 import { ARTICLES_DATA } from '../data/articlesData';
 import { FAQ_DATA } from '../data/faqData';
-import { ProductCard } from '../components/ProductCard';
 import { Lightbox } from '../components/Lightbox';
 import { 
   Flame, 
@@ -16,20 +14,15 @@ import {
   CheckCircle2, 
   FileText, 
   Sparkles, 
-  Layers, 
+  Users, 
   Package, 
   ChevronDown,
   Award
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedLightboxImg, setSelectedLightboxImg] = useState<{ src: string; alt: string; caption: string } | null>(null);
   const [openFaqId, setOpenFaqId] = useState<string | null>('faq-oem-packaging');
-
-  const filteredProducts = activeCategory === 'all'
-    ? PRODUCTS_DATA
-    : PRODUCTS_DATA.filter(p => p.category === activeCategory);
 
   return (
     <>
@@ -174,71 +167,14 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4 & 5: PRODUCT CATALOGUE SHOWCASE WITH CATEGORY TABS */}
-      <section className="section section-dark" id="products-catalogue">
+      {/* SECTION: CUSTOMER */}
+      <section className="section section-dark" id="customer" style={{ padding: '3.5rem 0' }}>
         <div className="container">
-          <div className="section-header text-center">
+          <div className="section-header text-center" style={{ margin: 0 }}>
             <span className="section-title-eyebrow">
-              <Layers size={14} /> Commercial Product Catalogue
+              <Users size={14} /> Customer
             </span>
-            <h2>Premium Commercial Charcoal Solutions</h2>
-            <p className="section-subtitle">
-              Sourced from selected timber, slowly carbonized in monitored kilns, and sorted into uniform size fractions with certified batch specifications.
-            </p>
-
-            {/* Category Filter Pills (Smoothly Scrollable) */}
-            <div 
-              className="hide-scrollbar"
-              onWheel={(e) => {
-                if (e.deltaY !== 0) {
-                  e.currentTarget.scrollLeft += e.deltaY;
-                }
-              }}
-              style={{
-                display: 'flex',
-                overflowX: 'auto',
-                scrollBehavior: 'smooth',
-                WebkitOverflowScrolling: 'touch',
-                justifyContent: 'center',
-                gap: '0.6rem',
-                marginTop: '2rem',
-                padding: '0.35rem 0.5rem',
-                maxWidth: '100%'
-              }}
-            >
-              {PRODUCT_CATEGORIES.map(cat => (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`btn btn-sm ${activeCategory === cat.id ? 'btn-primary' : 'btn-secondary'}`}
-                  style={{ 
-                    borderRadius: 'var(--radius-full)', 
-                    padding: '0.45rem 1.1rem',
-                    flexShrink: 0,
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  {cat.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Product Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '2rem'
-          }}>
-            {filteredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
-            <Link to="/products" className="btn btn-secondary btn-lg">
-              Explore Full Technical Catalogue & Specifications <ArrowRight size={18} />
-            </Link>
+            <h2 style={{ marginBottom: 0 }}>Customer</h2>
           </div>
         </div>
       </section>
