@@ -239,7 +239,7 @@ export const ProductDetailPage: React.FC = () => {
               {/* CTA Row */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
                 <a href="#quote-section" className="btn btn-primary btn-lg">
-                  Request Container Quote <ArrowRight size={18} />
+                  Request for Order/Supply <ArrowRight size={18} />
                 </a>
                 <Link to="/packaging-export" className="btn btn-secondary btn-lg">
                   <Package size={18} /> Packaging Specs

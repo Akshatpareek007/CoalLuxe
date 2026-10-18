@@ -76,7 +76,7 @@ export const HomePage: React.FC = () => {
             {/* CTAs */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
               <Link to="/request-quote" className="btn btn-primary btn-lg" style={{ boxShadow: 'var(--shadow-accent)' }}>
-                <FileText size={18} /> Request Container Quote
+                <FileText size={18} /> Request for Order/Supply
               </Link>
               <Link to="/products" className="btn btn-secondary btn-lg">
                 Explore Product Range <ArrowRight size={18} />

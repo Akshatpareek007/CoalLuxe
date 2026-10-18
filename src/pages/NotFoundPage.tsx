@@ -52,7 +52,7 @@ export const NotFoundPage: React.FC = () => {
             <Search size={16} /> Explore Product Catalogue
           </Link>
           <Link to="/request-quote" className="btn btn-secondary" style={{ justifyContent: 'center' }}>
-            Request Container Quote <ArrowRight size={16} />
+            Request for Order/Supply <ArrowRight size={16} />
           </Link>
         </div>
 

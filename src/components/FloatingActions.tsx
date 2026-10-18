@@ -29,7 +29,7 @@ export const FloatingActions: React.FC = () => {
         title="Request a Quote"
       >
         <FileText size={22} />
-        <span className="floating-btn-tooltip">Request Container Quote</span>
+        <span className="floating-btn-tooltip">Request for Order/Supply</span>
       </Link>
     </aside>
   );
